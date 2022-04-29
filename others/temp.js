@@ -1,15 +1,7 @@
-new Promise((resolve, reject) => {
-  resolve("resolve");
-})
-  .then((res) => {
-    console.log(res);
-  })
-  .then((res) => {
-    console.log(res);
-  })
-  .then((res) => {
-    console.log(res);
-  })
-  .then((res) => {
-    console.log(res);
-  });
+const x = {
+  a: "",
+  b: 2,
+};
+
+const { a = "0" } = x;
+console.log(a || 0);

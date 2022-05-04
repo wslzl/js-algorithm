@@ -1,11 +1,11 @@
 class MyPromise {
-  constructor(exector) {
+  constructor(executor) {
     this.status = "pending";
     this.value = null;
     this.reason = null;
     this.callbacks = [];
     try {
-      exector(this.resolve, this.reject);
+      executor(this.resolve, this.reject);
     } catch (error) {
       this.reject(error);
     }

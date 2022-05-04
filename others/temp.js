@@ -1,7 +1,6 @@
-const x = {
-  a: "",
-  b: 2,
-};
+(function () {
+  var a = (b = 3);
+})();
 
-const { a = "0" } = x;
-console.log(a || 0);
+console.log(b);
+console.log(a);

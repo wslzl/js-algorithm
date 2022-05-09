@@ -23,11 +23,19 @@ const deepClone = (value) => {
         result[i] = clone(v);
       }
       return result;
+    } else {
+      const result = {};
+      for (const key in v) {
+        result[key] = clone(v[key]);
+      }
+      return result;
     }
   };
-  let result = null;
+  if (!isObj(value)) {
+    return value;
+  }
+  let result = Array.isArray(value) ? [] : {};
   const keys = Reflect.ownKeys(value);
-  const desc =  
   keys.forEach((key) => {
     const val = value[key];
     result[key] = clone(val);
@@ -37,6 +45,13 @@ const deepClone = (value) => {
 
 const demo = {
   name: "demo",
-  date: new Date(),
-  regexp: /\d+/g,
+  obj: {
+    x: 1,
+    y: 2,
+  },
 };
+
+const demoCopy = deepClone(demo);
+demo.obj.x = 99;
+console.log(demo.obj.x);
+console.log(demoCopy.obj.x);

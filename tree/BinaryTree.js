@@ -71,6 +71,7 @@ class BinaryTree {
       console.log(node.value);
       ino(node.right);
     };
+    ino(this.root);
   }
   inOrder() {
     if (!this.root) {
@@ -78,8 +79,52 @@ class BinaryTree {
     }
     const stack = [];
     let p = this.root;
+    while (stack.length || p) {
+      while (p) {
+        stack.push(p);
+        p = p.left;
+      }
+      const n = stack.pop();
+      console.log(n.value);
+      p = n.right;
+    }
+  }
+  postOrderRecursion() {
+    const post = (n) => {
+      if (!n) {
+        return;
+      }
+      post(n.left);
+      post(n.right);
+      console.log(n.value);
+    };
+    post(this.root);
   }
   postOrder() {}
+  dfsOrder() {
+    const dfs = (n) => {
+      if (!n) {
+        return;
+      }
+      console.log(n.value);
+      dfs(n.left);
+      dfs(n.right);
+    };
+    dfs(this.root);
+  }
+  bfsOrder() {
+    const queue = [this.root];
+    while (queue.length) {
+      const head = queue.shift();
+      console.log(head.value);
+      if (head.left) {
+        queue.push(head.left);
+      }
+      if (head.right) {
+        queue.push(head.right);
+      }
+    }
+  }
 }
 
 const tree = new BinaryTree();
@@ -88,4 +133,6 @@ tree.insert(6);
 tree.insert(11);
 tree.insert(7);
 tree.insert(4);
-tree.preOrder();
+// tree.dfsOrder();
+// tree.bfsOrder();
+tree.postOrderRecursion();

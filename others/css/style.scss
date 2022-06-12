@@ -1,0 +1,8 @@
+$lists: #000, #222, #444, #666, #888, #aaa;
+
+@each $element in $lists {
+    $i: index($lists , $element );
+	.x-#{$i} {
+        color: $element;
+    }
+}

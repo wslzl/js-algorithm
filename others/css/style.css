@@ -1,24 +1,6 @@
-.x-1 {
-  color: #000;
+.root {
+  width: 500px;
+  height: 100px;
+  background-color: #9f7;
+  transform: skew(-89deg);
 }
-
-.x-2 {
-  color: #222;
-}
-
-.x-3 {
-  color: #444;
-}
-
-.x-4 {
-  color: #666;
-}
-
-.x-5 {
-  color: #888;
-}
-
-.x-6 {
-  color: #aaa;
-}
-/*# sourceMappingURL=style.css.map */

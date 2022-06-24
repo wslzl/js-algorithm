@@ -42,13 +42,43 @@ class MyPromise {
       });
     }
   }
-  static all() {}
-  static race() {}
+  static all(arr) {
+    return new Promise((resolve, reject) => {
+      let count = 0;
+      const res = [];
+      for (let i = 0; i < arr.length; i++) {
+        Promise.resolve(arr[i]).then((v) => {
+          count++;
+          res[i] = v;
+          if (count === arr.length) {
+            resolve(res);
+          }
+        });
+      }
+    });
+  }
+  static race(arr) {
+    let hasValue = fasle;
+    let hasError = fasle;
+    return new Promise((resolve, reject) => {
+      for (let i = 0; i < arr.length; i++) {
+        arr[i]
+          .then((data) => {
+            !hasValue && !hasError && resolve(data);
+            hasValue = true;
+          })
+          .catch((data) => {
+            !hasValue && !hasError && reject(data);
+            hasError = true;
+          });
+      }
+    });
+  }
 }
 
 const x = new MyPromise((resolve, reject) => {
-  resolve("");
+  resolve({ x: 1 });
 });
 x.then((res) => {
-  console.log("x", res);
+  console.log(res);
 });

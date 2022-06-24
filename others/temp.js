@@ -1,3 +1,15 @@
-const x = Object.assign({ c: 0 }, { c: "" });
+function Demo() {
+  return new Promise((resolve, reject) => {
+    resolve({ x: 1 });
+  }).then((res) => {
+    console.log(res);
+    return 9;
+  });
+}
 
-console.log(x);
+async function Run() {
+  const res = await Demo();
+  console.log(res);
+}
+
+Run();

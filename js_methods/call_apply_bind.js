@@ -16,7 +16,7 @@ Function.prototype.myApply = function (obj, args = []) {
 
 Function.prototype.myBind = function (obj, ...args) {
   const fn = Symbol();
-  obj[fn] = this;
+  obj[fn] = this; 
   return function () {
     const a = Array.prototype.slice.call(arguments);
     return obj[fn].apply(obj, [...args, ...a]);

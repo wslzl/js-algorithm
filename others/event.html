@@ -7,70 +7,110 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <button>123</button>
+    <div class="box1">
+      <div class="box2">
+        <div class="box3"></div>
+      </div>
     </div>
+    <style>
+      .box1 {
+        width: 250px;
+        height: 250px;
+        background-color: #eee;
+      }
+      .box2 {
+        width: 150px;
+        height: 150px;
+        background-color: #999;
+      }
+      .box3 {
+        width: 50px;
+        height: 50px;
+        background-color: #333;
+      }
+    </style>
     <script>
-      var btn = document.querySelector("button");
-      var div = document.querySelector("div");
+      var box1 = document.querySelector(".box1");
+      var box2 = document.querySelector(".box2");
+      var box3 = document.querySelector(".box3");
+
       var body = document.body;
       var html = document.documentElement;
-      btn.addEventListener(
+
+      box1.addEventListener(
         "click",
         function () {
-          console.log("bubble", "btn");
+          console.log("bubble", "box1");
         },
         false
       );
-      btn.addEventListener(
+      box1.addEventListener(
         "click",
         function () {
-          console.log("capture", "btn");
+          console.log("capture", "box1");
         },
         true
       );
-      div.addEventListener(
+      box2.addEventListener(
         "click",
         function () {
-          console.log("bubble", "div");
+          console.log("bubble", "box2");
         },
         false
       );
-      div.addEventListener(
+      box2.addEventListener(
         "click",
         function () {
-          console.log("capture", "div");
+          console.log("capture", "box2");
         },
         true
       );
-      body.addEventListener(
+      box3.addEventListener(
         "click",
         function () {
-          console.log("bubble", "body");
+          console.log("bubble", "box3");
         },
         false
       );
-      body.addEventListener(
+      box3.addEventListener(
         "click",
         function () {
-          console.log("capture", "body");
+          console.log("capture", "box3");
         },
         true
       );
-      html.addEventListener(
-        "click",
-        function () {
-          console.log("bubble", "html");
-        },
-        false
-      );
-      html.addEventListener(
-        "click",
-        function () {
-          console.log("capture", "html");
-        },
-        true
-      );
+//       capture div
+// bubble btn
+// capture btn
+// bubble div
+      // body.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("bubble", "body");
+      //   },
+      //   false
+      // );
+      // body.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("capture", "body");
+      //   },
+      //   true
+      // );
+      // html.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("bubble", "html");
+      //   },
+      //   false
+      // );
+      // html.addEventListener(
+      //   "click",
+      //   function () {
+      //     console.log("capture", "html");
+      //   },
+      //   true
+      // );
     </script>
   </body>
 </html>

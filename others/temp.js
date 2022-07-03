@@ -1,15 +1,18 @@
-function Demo() {
-  return new Promise((resolve, reject) => {
-    resolve({ x: 1 });
-  }).then((res) => {
-    console.log(res);
-    return 9;
-  });
+function Parent(val) {
+  this.p = val;
 }
 
-async function Run() {
-  const res = await Demo();
-  console.log(res);
+function Son(val) {
+  this.s = val;
+  Parent.call(this, val);
 }
 
-Run();
+(function () {
+  const c = function () {};
+  c.prototype = Parent.prototype;
+  Son.prototype = new c();
+})();
+Son.prototype.constructor = Son;
+
+const test = new Son(9);
+console.log(test);
